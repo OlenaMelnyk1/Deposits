@@ -27,6 +27,6 @@ public class BaseDeposit extends Deposit{
 
     @Override
     public int compareTo(Deposit o) {
-        return 0;
+        return this.incomeAmount().compareTo(o.incomeAmount());
     }
 }
