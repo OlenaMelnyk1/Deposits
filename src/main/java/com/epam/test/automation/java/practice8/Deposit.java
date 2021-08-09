@@ -28,4 +28,3 @@ public abstract class Deposit implements Comparable <Deposit> {
 
 
 }
-
