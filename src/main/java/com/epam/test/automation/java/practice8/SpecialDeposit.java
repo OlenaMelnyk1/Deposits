@@ -38,3 +38,4 @@ public class SpecialDeposit extends Deposit implements Prolongable{
     }
 
 }
+
