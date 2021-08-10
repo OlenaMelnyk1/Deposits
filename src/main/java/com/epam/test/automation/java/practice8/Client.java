@@ -49,7 +49,6 @@ public class Client implements Iterable<Deposit> {
             if ((deposit!=null)&&(maxIncome.compareTo(deposit.income())<0)) 
                 maxIncome=deposit.income();
             }
-        }
         return maxIncome;
     }
 
