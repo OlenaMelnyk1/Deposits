@@ -107,10 +107,10 @@ public class Client implements Iterable<Deposit> {
     public int countPossibleToProlongDeposit(){
         int sum=0;
         for (Deposit deposit:deposits) {
-           // if (deposit instanceof Prolongable)
-            //if (Prolongable.class.isInstance(deposit))
+           if (deposit instanceof Prolongable){
                if  (((Prolongable) deposit).canToProlong())
                 sum++;
+           }
         }
         return sum;
     }
