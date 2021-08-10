@@ -73,22 +73,23 @@ public class Client implements Iterable<Deposit> {
 	
     class clientIterator implements Iterator<Deposit>{
         private int i;
+        
         public clientIterator() {
             this.i = 0;
         }
-	}
-		
-    @Override
-    public boolean hasNext() {
-        if (deposits[i]==null) return false;
+	
+        @Override
+        public boolean hasNext() {
+          if (deposits[i]==null) return false;
         return i<deposits.length-1;
-    }
-    
-    @Override
-    public Deposit next() {
-        if(hasNext()) return deposits[i++];
-            else throw new NoSuchElementException();
         }
+    
+        @Override
+        public Deposit next() {
+            if(hasNext()) return deposits[i++];
+              else throw new NoSuchElementException();
+        }
+    }
 
     public Deposit[] sortDeposits(){
         Deposit temp;
