@@ -69,13 +69,13 @@ public class Client implements Iterable<Deposit> {
 
     @Override
     public Iterator<Deposit> iterator() {
-        return new clientIterator();
+        return new ClientIterator();
     }
 	
-    class clientIterator implements Iterator<Deposit>{
+    class ClientIterator implements Iterator<Deposit>{
         private int i;
         
-        public clientIterator() {
+        public ClientIterator() {
             this.i = 0;
         }
 	
