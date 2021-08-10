@@ -68,12 +68,12 @@ public class Client implements Iterable<Deposit> {
 
     @Override
     public Iterator<Deposit> iterator() {
-        return new depositIterator();
+        return new clientIterator();
     }
-    class depositIterator implements Iterator<Deposit>{
+    class clientIterator implements Iterator<Deposit>{
         private int i;
 
-        public depositIterator() {
+        public clientIterator() {
             this.i = 0;
         }
         @Override
@@ -106,10 +106,8 @@ public class Client implements Iterable<Deposit> {
     public int countPossibleToProlongDeposit(){
         int sum=0;
         for (Deposit deposit:deposits) {
-           if (deposit instanceof Prolongable){
-               if  (((Prolongable) deposit).canToProlong())
+           if ((deposit instanceof Prolongable)&&((Prolongable) deposit).canToProlong())
                 sum++;
-           }
         }
         return sum;
     }
