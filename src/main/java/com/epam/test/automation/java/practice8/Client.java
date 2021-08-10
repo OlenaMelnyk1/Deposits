@@ -46,8 +46,8 @@ public class Client implements Iterable<Deposit> {
     public BigDecimal maxIncome(){
         BigDecimal maxIncome=deposits[0].income();
         for (var deposit: deposits) {
-            if (deposit!=null){
-                if (maxIncome.compareTo(deposit.income())<0) maxIncome=deposit.income();
+            if ((deposit!=null)&&(maxIncome.compareTo(deposit.income())<0)) 
+                maxIncome=deposit.income();
             }
         }
         return maxIncome;
@@ -80,7 +80,7 @@ public class Client implements Iterable<Deposit> {
         @Override
         public boolean hasNext() {
             if (deposits[i]==null) return false;
-            return i<=deposits.length-1;
+            return i<deposits.length-1;
         }
         @Override
         public Deposit next() {
