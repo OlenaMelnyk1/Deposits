@@ -8,7 +8,7 @@ public abstract class Deposit implements Comparable <Deposit> {
     static final String INCORRECT_ARGS= "Incorrect period or amount";
 
     public Deposit(BigDecimal amount, int period){
-        if ((amount.compareTo(BigDecimal.ZERO)<0) || (period<1) || (amount==null))
+        if ((period<1) || (amount==null))
             throw new IllegalArgumentException(INCORRECT_ARGS);
         this.amount=amount;
         this.period=period;
