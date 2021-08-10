@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class LongDeposit extends  Deposit implements Prolongable{
+    private static final int LONG_TERM=36;
     BigDecimal sum = BigDecimal.ZERO;
-    private final static int LONG_TERM=36;
 
     public LongDeposit(BigDecimal depositAmount,int depositPeriod){
         super(depositAmount,depositPeriod);
@@ -17,18 +17,17 @@ public class LongDeposit extends  Deposit implements Prolongable{
         final double percent = 1.15;
         sum = this.amount;
         if (period<7) return BigDecimal.ZERO;
-        else {
-            for (int i = 7; i <= period; i++)
-            sum = sum.multiply(BigDecimal.valueOf(percent));
-            return sum.subtract(this.amount).setScale(2, RoundingMode.HALF_DOWN);
-        }
+            else {
+                for (int i = 7; i <= period; i++)
+                sum = sum.multiply(BigDecimal.valueOf(percent));
+                
+            }
+        return sum.subtract(this.amount).setScale(2, RoundingMode.HALF_DOWN);
     }
 
     @Override
     public boolean canToProlong() {
-        if (this.period<LONG_TERM)
-            return true;
-        return false;
+        return (this.period<LONG_TERM);
     }
     @Override
     public BigDecimal incomeAmount() {
