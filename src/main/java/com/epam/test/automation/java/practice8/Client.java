@@ -2,6 +2,7 @@ package com.epam.test.automation.java.practice8;
 
 import java.math.BigDecimal;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 
 public class Client implements Iterable<Deposit> {
