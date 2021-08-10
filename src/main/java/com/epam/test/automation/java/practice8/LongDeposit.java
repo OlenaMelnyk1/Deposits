@@ -19,7 +19,7 @@ public class LongDeposit extends  Deposit implements Prolongable{
         if (period<7) return BigDecimal.ZERO;
             else {
                 for (int i = 7; i <= period; i++)
-                sum = sum.multiply(BigDecimal.valueOf(percent));
+                    sum = sum.multiply(BigDecimal.valueOf(percent));
                 
             }
         return sum.subtract(this.amount).setScale(2, RoundingMode.HALF_DOWN);
