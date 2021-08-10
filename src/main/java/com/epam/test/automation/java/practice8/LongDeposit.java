@@ -16,9 +16,12 @@ public class LongDeposit extends  Deposit implements Prolongable{
     public BigDecimal income() {
         final double percent = 1.15;
         sum = this.amount;
-        for (int i = 7; i <= period; i++)
+        if (period<7) return BigDecimal.ZERO;
+        else {
+            for (int i = 7; i <= period; i++)
             sum = sum.multiply(BigDecimal.valueOf(percent));
-        return sum.subtract(this.amount).setScale(2, RoundingMode.HALF_DOWN);
+            return sum.subtract(this.amount).setScale(2, RoundingMode.HALF_DOWN);
+        }
     }
 
     @Override
