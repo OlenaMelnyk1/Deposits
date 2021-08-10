@@ -23,7 +23,7 @@ public class SpecialDeposit extends Deposit implements Prolongable{
 
     @Override
     public boolean canToProlong() {
-        return (this.period<LONG_TERM);
+        return (this.amount.compareTo(BigDecimal.valueOf(1000))>0);
     }
     
     @Override
