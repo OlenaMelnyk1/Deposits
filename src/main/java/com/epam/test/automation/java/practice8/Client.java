@@ -70,12 +70,14 @@ public class Client implements Iterable<Deposit> {
     public Iterator<Deposit> iterator() {
         return new clientIterator();
     }
+	
     class clientIterator implements Iterator<Deposit>{
         private int i;
-
         public clientIterator() {
             this.i = 0;
         }
+	}
+		
     @Override
     public boolean hasNext() {
         if (deposits[i]==null) return false;
@@ -84,7 +86,7 @@ public class Client implements Iterable<Deposit> {
     
     @Override
     public Deposit next() {
-        if(!hasNext()) return deposits[i++];
+        if(hasNext()) return deposits[i++];
             else throw new NoSuchElementException();
         }
 
@@ -107,8 +109,7 @@ public class Client implements Iterable<Deposit> {
     public int countPossibleToProlongDeposit(){
         int sum=0;
         for (Deposit deposit:deposits) {
-           if ((deposit instanceof Prolongable)&&((Prolongable) deposit).canToProlong())
-                sum++;
+           if ((deposit instanceof Prolongable)&&((Prolongable) deposit).canToProlong())  sum++;
         }
         return sum;
     }
