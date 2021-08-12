@@ -79,7 +79,7 @@ public class Client implements Iterable<Deposit>{
     public class DepositComparator implements Comparator<Deposit>{
         @Override
         public int compare(Deposit o1, Deposit o2) {
-            return o2.incomeAmount().compareTo(o1.incomeAmount());
+            return o1.incomeAmount().compareTo(o2.incomeAmount());
         }
     }
     class ClientIterator implements Iterator<Deposit>{
@@ -91,7 +91,8 @@ public class Client implements Iterable<Deposit>{
 	
         @Override
         public boolean hasNext() {
-          if (size<0) return false;
+          if (size<0) throw new NoSuchElementException();
+          if (i>=deposits.length-1) return false;
         else return i<deposits.length-1;
         }
     
@@ -104,7 +105,7 @@ public class Client implements Iterable<Deposit>{
 
     public void sortDeposits(){
         if (size<0) throw new IllegalArgumentException();
-        else Arrays.sort(deposits, 0, size, new DepositComparator());
+        else Arrays.sort(deposits, size, 0, new DepositComparator());
     }
     public int countPossibleToProlongDeposit(){
         int sum=0;
