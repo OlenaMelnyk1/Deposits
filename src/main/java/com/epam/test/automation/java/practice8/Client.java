@@ -105,7 +105,7 @@ public class Client implements Iterable<Deposit>{
 
     public void sortDeposits(){
         if (size<0) throw new IllegalArgumentException();
-        else Arrays.sort(deposits, size, 0, new DepositComparator());
+        else Arrays.sort(deposits, 0, size,new DepositComparator().reversed());
     }
     public int countPossibleToProlongDeposit(){
         int sum=0;
