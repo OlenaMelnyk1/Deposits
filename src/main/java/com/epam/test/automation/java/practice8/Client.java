@@ -1,8 +1,5 @@
 package com.epam.test.automation.java.practice8;
 
-
-import org.mockito.internal.matchers.CompareTo;
-
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Comparator;
