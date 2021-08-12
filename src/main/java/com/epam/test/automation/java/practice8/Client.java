@@ -91,8 +91,8 @@ public class Client implements Iterable<Deposit>{
 	
         @Override
         public boolean hasNext() {
-          if (deposits[i]==null) return false;
-        return i<deposits.length-1;
+          if (size<0) return false;
+        else return i<deposits.length-1;
         }
     
         @Override
