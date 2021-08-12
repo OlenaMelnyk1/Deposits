@@ -1,14 +1,20 @@
 package com.epam.test.automation.java.practice8;
 
+
+import org.mockito.internal.matchers.CompareTo;
+
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 
-public class Client implements Iterable<Deposit> {
+public class Client implements Iterable<Deposit>{
     private static final int DEPOSIT_ARRAY_LENGTH = 10;
     private static final String ILLEGAL_ARGUMENT = "Argument must not be null";
     private final Deposit[] deposits;
+    private int size=-1;
 
     public Client() {
         this.deposits = new Deposit[DEPOSIT_ARRAY_LENGTH];
@@ -21,6 +27,7 @@ public class Client implements Iterable<Deposit> {
         for (int i = 0; i < deposits.length; i++) {
             if (this.deposits[i] == null){
                 this.deposits[i] = deposit;
+                size++;
                 return true;
             }
         }
@@ -71,10 +78,16 @@ public class Client implements Iterable<Deposit> {
     public Iterator<Deposit> iterator() {
         return new ClientIterator();
     }
-	
+
+    public class DepositComparator implements Comparator<Deposit>{
+        @Override
+        public int compare(Deposit o1, Deposit o2) {
+            return o2.incomeAmount().compareTo(o1.incomeAmount());
+        }
+    }
     class ClientIterator implements Iterator<Deposit>{
         private int i;
-        
+
         public ClientIterator() {
             this.i = 0;
         }
@@ -92,22 +105,9 @@ public class Client implements Iterable<Deposit> {
         }
     }
 
-    public Deposit[] sortDeposits(){
-        Deposit temp;
-        for (int i =deposits.length-1; i >1; i--) {
-            for (int j = 0; j < i; j++) {
-                if (deposits[j+1].incomeAmount().compareTo(deposits[j].incomeAmount())>0){
-                    temp=deposits[j+1];
-                    deposits[j+1]=deposits[j];
-                    deposits[j]=temp;
-                }
-
-            }
-
-        }
-        return deposits;
+    public void sortDeposits(){
+        Arrays.sort(deposits, 0, size, new DepositComparator());
     }
-
     public int countPossibleToProlongDeposit(){
         int sum=0;
         for (Deposit deposit:deposits) {

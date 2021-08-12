@@ -1,6 +1,7 @@
 package com.epam.test.automation.java.practice8;
 
 import java.math.BigDecimal;
+import java.util.Comparator;
 
 public abstract class Deposit implements Comparable <Deposit> {
     public final  BigDecimal amount;
@@ -18,10 +19,6 @@ public abstract class Deposit implements Comparable <Deposit> {
         return amount;
     }
 
-    /** Income is the difference between sum amount at the begin and at the end deposit.
-     *
-     * @return
-     */
     public abstract BigDecimal income();
 
     public abstract BigDecimal incomeAmount();
