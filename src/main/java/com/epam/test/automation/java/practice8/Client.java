@@ -91,9 +91,9 @@ public class Client implements Iterable<Deposit>{
 	
         @Override
         public boolean hasNext() {
-          if (size<0) throw new NoSuchElementException();
-          if (i>=deposits.length-1) return false;
-        else return i<deposits.length-1;
+          if (size<0) throw new NullPointerException();
+          else if (i>=deposits.length-1) return false;
+                else return i<deposits.length-1;
         }
     
         @Override
